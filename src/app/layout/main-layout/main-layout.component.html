@@ -1,0 +1,11 @@
+<ion-content slot="fixed" [fullscreen]="true">
+
+  <div class="head">
+    <img src="assets/icon/main-logo.png">
+
+  </div>
+  <div class="router">
+    <ng-container *ngTemplateOutlet="listMenu"></ng-container>
+    <ng-container *ngTemplateOutlet="loginTemp"></ng-container>
+  </div>
+</ion-content>

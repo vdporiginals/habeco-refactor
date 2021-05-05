@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="82" viewBox="0 0 72 82">
+  <g id="Group_21223" data-name="Group 21223" transform="translate(-67 -427)">
+    <path id="Icon_awesome-beer" data-name="Icon awesome-beer" d="M53.393,11.536H46.429v-5.8A3.482,3.482,0,0,0,42.946,2.25H3.482A3.482,3.482,0,0,0,0,5.732V63.768A3.482,3.482,0,0,0,3.482,67.25H42.946a3.482,3.482,0,0,0,3.482-3.482v-6.11l11.7-5.22A11.62,11.62,0,0,0,65,41.839v-18.7A11.62,11.62,0,0,0,53.393,11.536Zm2.321,30.3a2.324,2.324,0,0,1-1.375,2.12l-7.91,3.531V20.821h6.964a2.324,2.324,0,0,1,2.321,2.321ZM30.179,53.321A2.322,2.322,0,0,1,27.857,51V18.5a2.321,2.321,0,1,1,4.643,0V51A2.322,2.322,0,0,1,30.179,53.321Zm-13.929,0A2.322,2.322,0,0,1,13.929,51V18.5a2.321,2.321,0,0,1,4.643,0V51A2.322,2.322,0,0,1,16.25,53.321Z" transform="translate(67 441.75)" fill="#00a050"/>
+    <g id="Group_21202" data-name="Group 21202" transform="translate(-197.112 -5.112)">
+      <rect id="Rectangle_2388" data-name="Rectangle 2388" width="7" height="23" transform="translate(321.112 432.112)"/>
+      <rect id="Rectangle_2389" data-name="Rectangle 2389" width="7" height="23" transform="translate(336.112 440.112) rotate(90)"/>
+    </g>
+  </g>
+</svg>

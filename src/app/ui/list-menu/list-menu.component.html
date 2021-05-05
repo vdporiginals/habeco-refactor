@@ -1,0 +1,9 @@
+<ion-grid>
+  <ion-row>
+    <ng-template ngFor let-item let-i="index" [ngForOf]="menuList">
+      <ion-col size="6">
+        <app-menu-card [menu]="item"></app-menu-card>
+      </ion-col>
+    </ng-template>
+  </ion-row>
+</ion-grid>
