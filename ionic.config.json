@@ -1,0 +1,7 @@
+{
+  "name": "Habeco App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
