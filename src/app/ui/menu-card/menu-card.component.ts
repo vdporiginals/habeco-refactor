@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
+import { ModalType } from 'src/app/models/modal-type.enum';
+import { QrWebrtcComponent } from 'src/app/utils/qr-webrtc/qr-webrtc.component';
 
 @Component({
   selector: 'app-menu-card',
@@ -10,9 +12,19 @@ import { IonicModule } from '@ionic/angular';
 })
 export class MenuCardComponent implements OnInit {
   @Input() menu;
-  constructor() {}
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {}
+
+  async openQRModal(type: ModalType) {
+    const modal = await this.modalController.create({
+      component: QrWebrtcComponent,
+      componentProps: {
+        type,
+      },
+    });
+    await modal.present();
+  }
 }
 
 @NgModule({

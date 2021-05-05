@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalType } from 'src/app/models/modal-type.enum';
 
 @Component({
   selector: 'app-maintain',
@@ -15,22 +16,26 @@ export class MaintainPage implements OnInit {
     {
       name: 'Nhập bảo dưỡng',
       icon: 'assets/main/nhap_bao_duong.svg',
-      route: '/warehouse',
+      route: null,
+      type: ModalType.addMaintain
     },
     {
       name: 'Thêm linh kiện',
       icon: 'assets/main/them_linh_kien.svg',
-      route: '/bear',
+      route: null,
+      type: ModalType.maintainAddAccess
     },
     {
       name: 'Xuất bảo dưỡng',
       icon: 'assets/main/xuat_bao_duong.svg',
-      route: '/maintain',
+      route: null,
+      type: ModalType.exportMaintain
     },
     {
       name: 'Tra cứu',
       icon: 'assets/main/tra_cuu.svg',
-      route: '/report',
+      route: null,
+      type: ModalType.searchMaintain
     },
     {
       name: 'Danh sách',

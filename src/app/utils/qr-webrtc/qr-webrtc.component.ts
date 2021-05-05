@@ -18,10 +18,10 @@ const { Permissions, Camera } = Plugins;
 })
 export class QrWebrtcComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas') canvasElement: ElementRef;
-  height = 480;
-  width = 480;
+  height = 150;
+  width = 150;
   canvas;
-  video;
+  video = document.createElement('video');
   constructor(private renderer: Renderer2) {}
 
   ngOnInit() {
@@ -30,13 +30,11 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.canvas = this.canvasElement.nativeElement.getContext('2d');
-    this.video = this.renderer.createElement('video');
-
     navigator.mediaDevices
       .getUserMedia({ video: { facingMode: 'environment' } })
       .then((stream) => {
         this.video.srcObject = stream;
-        this.video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
+        this.video.setAttribute('playsinline', 'true'); // required to tell iOS safari we don't want fullscreen
         this.video.play();
         requestAnimationFrame(this.tick.bind(this));
       });
@@ -127,6 +125,6 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
         // outputData.parentElement.hidden = true;
       }
     }
-    requestAnimationFrame(this.tick);
+    requestAnimationFrame(this.tick.bind(this));
   }
 }
