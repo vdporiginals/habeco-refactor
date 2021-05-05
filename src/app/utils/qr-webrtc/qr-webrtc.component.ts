@@ -22,18 +22,23 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
   width = 150;
   canvas;
   video = document.createElement('video');
-  constructor(private renderer: Renderer2) {}
+  constructor() {}
 
   ngOnInit() {
     this.reqPer();
+    this.video.width = 150;
+    this.video.height = 150;
   }
 
   ngAfterViewInit() {
+    this.canvasElement.nativeElement.width = 150;
+    this.canvasElement.nativeElement.height = 150;
     this.canvas = this.canvasElement.nativeElement.getContext('2d');
     navigator.mediaDevices
       .getUserMedia({ video: { facingMode: 'environment' } })
       .then((stream) => {
         this.video.srcObject = stream;
+
         this.video.setAttribute('playsinline', 'true'); // required to tell iOS safari we don't want fullscreen
         this.video.play();
         requestAnimationFrame(this.tick.bind(this));
@@ -74,8 +79,8 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
       this.canvasElement.nativeElement.hidden = false;
       // outputContainer.hidden = false;
 
-      this.canvasElement.nativeElement.height = this.video.videoHeight;
-      this.canvasElement.nativeElement.width = this.video.videoWidth;
+      this.canvasElement.nativeElement.height = 150;
+      this.canvasElement.nativeElement.width = 150;
       this.canvas.drawImage(
         this.video,
         0,
