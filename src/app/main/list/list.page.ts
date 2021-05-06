@@ -29,28 +29,28 @@ export class ListPage implements OnInit {
       headerLabel: 'Serial',
       contentLabel: 'Thời gian xuất kho',
       contentDate: '2020-03-11',
-      routeLink: '/maintain/detail-maintain/1',
+      modalData: '/detail/1',
     },
     {
       headerVal: '215151561',
       headerLabel: 'Serial',
       contentLabel: 'Thời gian xuất kho',
       contentDate: '2020-03-11',
-      routeLink: '/maintain/detail-maintain/1',
+      modalData: '/detail/1',
     },
     {
       headerVal: '215151561',
       headerLabel: 'Serial',
       contentLabel: 'Thời gian xuất kho',
       contentDate: '2020-03-11',
-      routeLink: '/maintain/detail-maintain/1',
+      modalData: '/detail/1',
     },
     {
       headerVal: '215151561',
       headerLabel: 'Serial',
       contentLabel: 'Thời gian xuất kho',
       contentDate: '2020-03-11',
-      routeLink: '/maintain/detail-maintain/1',
+      modalData: '/detail/1',
     },
   ];
   from: string;
@@ -66,5 +66,9 @@ export class ListPage implements OnInit {
     }
 
     this.listCard = this.apiCard;
+  }
+
+  onSegmentChange(ev) {
+    this.currentSegment = ev;
   }
 }

@@ -1,4 +1,4 @@
-<div class="card-list" [routerLink]="[listItem.routeLink]">
+<div class="card-list" (click)="openDetailModal(listItem)">
   <div class="card-list-box card-list-serial">
     <div class="label">
       {{ listItem.headerLabel }}

@@ -1,15 +1,11 @@
 <ion-header>
   <ion-grid>
     <ion-col size="12">
-      <app-back-button [defaultHref]="defaultHref"></app-back-button>
+      <app-back-button [isModal]="isModal" [defaultHref]="defaultHref"></app-back-button>
     </ion-col>
 
-    <app-list-segment
-      *ngIf="fromList"
-      [currentSegment]="currentSegment"
-      (segmentChange)="segmentSelect.emit($event)"
-      [listSeg]="listSegment"
-    ></app-list-segment>
+    <app-list-segment *ngIf="fromList" [currentSegment]="currentSegment" (segmentChange)="segmentSelect.emit($event)"
+      [listSeg]="listSegment"></app-list-segment>
 
     <ion-row class="row_flex">
       <ion-col>
@@ -17,23 +13,18 @@
           {{ headerTitle }}
         </h3>
       </ion-col>
-      <ion-col size="2" *ngIf="fromMaintain">
+      <ion-col size="2" *ngIf="fromMaintain && isModal == false">
         <img src="assets/icon/search_icon.svg" alt="" />
       </ion-col>
     </ion-row>
     <ion-row class="ion-align-items-center">
-      <ion-col size="2"> <p>Bộ lọc:</p></ion-col>
+      <ion-col size="2">
+        <p>Bộ lọc:</p>
+      </ion-col>
       <ion-col size="6">
-        <input
-          [style.display]="!fromWarehouse ? 'none' : 'block'"
-          type="text"
-          [formControl]="textSearch"
-        />
-        <ion-select
-          *ngIf="fromMaintain"
-          value="3"
-          (ionChange)="filterResult.emit($event)"
-        >
+        <input placeholder="Điền serial" class="from_warehouse"
+          [style.display]="from !== 'from-warehouse' ? 'none' : 'block'" type="text" [formControl]="textSearch" />
+        <ion-select *ngIf="from == 'from-maintain'" value="3" (ionChange)="filterResult.emit($event)">
           <ion-select-option value="1">Mới</ion-select-option>
           <ion-select-option value="2">Đã xác nhận</ion-select-option>
           <ion-select-option value="3">Đang bảo dưỡng</ion-select-option>

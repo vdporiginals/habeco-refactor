@@ -7,21 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: MaintainPage,
-  },
-  {
-    path: 'list-maintain',
-    loadChildren: () =>
-      import('./list-maintain-page/list-maintain-page.module').then(
-        (m) => m.ListMaintainPagePageModule
-      ),
-  },
-  {
-    path: 'detail-maintain/:id',
-    loadChildren: () =>
-      import('./detail-maintain-page/detail-maintain-page.module').then(
-        (m) => m.DetailMaintainPagePageModule
-      ),
-  },
+  }
 ];
 
 @NgModule({

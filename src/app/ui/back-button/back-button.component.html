@@ -1,17 +1,15 @@
-
 <div class="backbtn_wrap">
   <div class="back_btn">
-    <ion-buttons>
-      <ion-back-button
-        class="header-back-btn"
-        text=""
-        [defaultHref]="defaultHref"
-        icon="arrow-back-outline"
-      ></ion-back-button>
+    <ion-buttons *ngIf="!isModal">
+      <ion-back-button class="header-back-btn" text="" [defaultHref]="defaultHref" icon="arrow-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="isModal" (click)="closeModal()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-buttons>
   </div>
   <div class="back_home">
     <button>Quay về Trang chủ</button>
   </div>
-  
+
 </div>

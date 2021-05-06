@@ -1,7 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, NgModule, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+  OnInit,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
+import { DetailModalComponent } from 'src/app/main/detail-modal/detail-modal.component';
 
 @Component({
   selector: 'app-list-card',
@@ -11,9 +18,20 @@ import { IonicModule } from '@ionic/angular';
 })
 export class ListCardComponent implements OnInit {
   @Input() listItem;
-  constructor() {}
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {}
+
+  async openDetailModal(data) {
+    const modal = await this.modalController.create({
+      component: DetailModalComponent,
+      componentProps: {
+        data,
+      },
+    });
+
+    await modal.present();
+  }
 }
 
 @NgModule({

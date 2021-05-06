@@ -18,21 +18,21 @@ const { Permissions, Camera } = Plugins;
 })
 export class QrWebrtcComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas') canvasElement: ElementRef;
-  height = 150;
-  width = 150;
+  height = 180;
+  width = 180;
   canvas;
   video = document.createElement('video');
   constructor() {}
 
   ngOnInit() {
     this.reqPer();
-    this.video.width = 150;
-    this.video.height = 150;
+    this.video.width = 180;
+    this.video.height = 180;
   }
 
   ngAfterViewInit() {
-    this.canvasElement.nativeElement.width = 150;
-    this.canvasElement.nativeElement.height = 150;
+    this.canvasElement.nativeElement.width = 180;
+    this.canvasElement.nativeElement.height = 180;
     this.canvas = this.canvasElement.nativeElement.getContext('2d');
     navigator.mediaDevices
       .getUserMedia({ video: { facingMode: 'environment' } })
@@ -63,24 +63,26 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
     }
   }
 
-  drawLine(begin, end, color) {
+  drawLine(begin, end, color, lineWidth = 4) {
     this.canvas.beginPath();
     this.canvas.moveTo(begin.x, begin.y);
     this.canvas.lineTo(end.x, end.y);
-    this.canvas.lineWidth = 4;
+    this.canvas.lineWidth = lineWidth;
     this.canvas.strokeStyle = color;
     this.canvas.stroke();
   }
 
   tick() {
+    console.log();
+    let data;
     // loadingMessage.innerText = '⌛ Loading video...';
     if (this.video.readyState === this.video.HAVE_ENOUGH_DATA) {
       // loadingMessage.hidden = true;
       this.canvasElement.nativeElement.hidden = false;
       // outputContainer.hidden = false;
 
-      this.canvasElement.nativeElement.height = 150;
-      this.canvasElement.nativeElement.width = 150;
+      this.canvasElement.nativeElement.height = 180;
+      this.canvasElement.nativeElement.width = 180;
       this.canvas.drawImage(
         this.video,
         0,
@@ -98,7 +100,22 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
       const code = jsQR(imageData.data, imageData.width, imageData.height, {
         inversionAttempts: 'dontInvert',
       });
+      this.drawLine({ x: 0, y: 0 }, { x: 40, y: 0 }, '#00A050', 10);
+      this.drawLine({ x: 0, y: 0 }, { x: 0, y: 40 }, '#00A050', 10);
 
+      this.drawLine({ x: 180, y: 0 }, { x: 140, y: 0 }, '#00A050', 10);
+      this.drawLine({ x: 180, y: 0 }, { x: 180, y: 40 }, '#00A050', 10);
+
+      this.drawLine({ x: 0, y: 180 }, { x: 0, y: 140 }, '#00A050', 10);
+      this.drawLine({ x: 0, y: 180 }, { x: 40, y: 180 }, '#00A050', 10);
+
+      this.drawLine({ x: 180, y: 180 }, { x: 140, y: 180 }, '#00A050', 10);
+      this.drawLine({ x: 180, y: 180 }, { x: 180, y: 140 }, '#00A050', 10);
+
+      this.drawLine({ x: 90, y: 90 }, { x: 110, y: 90 }, '#00A050', 2);
+      this.drawLine({ x: 90, y: 90 }, { x: 90, y: 110 }, '#00A050', 2);
+      this.drawLine({ x: 90, y: 90 }, { x: 70, y: 90 }, '#00A050', 2);
+      this.drawLine({ x: 90, y: 90 }, { x: 90, y: 70 }, '#00A050', 2);
       if (code) {
         this.drawLine(
           code.location.topLeftCorner,
@@ -121,7 +138,10 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
           '#FF3B58'
         );
         console.log(code.data);
-
+        if (code.data) {
+          console.log(code.data);
+          data = code.data;
+        }
         // outputMessage.hidden = true;
         // outputData.parentElement.hidden = false;
         // outputData.innerText = code.data;
@@ -129,6 +149,9 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
         // outputMessage.hidden = false;
         // outputData.parentElement.hidden = true;
       }
+    }
+    if (data) {
+      return cancelAnimationFrame(this.tick.bind(this));
     }
     requestAnimationFrame(this.tick.bind(this));
   }

@@ -3,7 +3,7 @@
   [fromMaintain]="true"
   [listSegment]="listSegment"
   [currentSegment]="currentSegment"
-  (segmentSelect)="currentSegment = $event"
+  (segmentSelect)="onSegmentChange($event) "
   [listItemClient]="apiCard"
   [searchParams]="'headerVal'"
   [fromList]="true"

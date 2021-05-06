@@ -2,3 +2,12 @@
   display: flex;
   align-items: center;
 }
+.back_home {
+  button {
+    border-radius: 2rem;
+    padding: 7px 15px;
+    margin-left: 10px;
+    background: transparent;
+    border: 1px solid black;
+  }
+}

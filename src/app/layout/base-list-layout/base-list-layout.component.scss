@@ -6,10 +6,23 @@ ion-header {
   height: 230px;
   display: flex;
   align-items: center;
+  &::after {
+    content: none !important;
+  }
 }
 ion-content {
   height: calc(100vh - 230px);
 }
 .router {
   padding: 0 10px;
+}
+
+.from_warehouse {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 1px 1px 2px;
+  height: 30px;
+  text-align: center;
+  padding: 8px;
+  outline: none;
 }

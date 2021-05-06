@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-back-button',
@@ -17,9 +17,14 @@ import { IonicModule } from '@ionic/angular';
 })
 export class BackButtonComponent implements OnInit {
   @Input() defaultHref;
-  constructor() {}
+  @Input() isModal;
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {}
+
+  closeModal() {
+    this.modalController.dismiss();
+  }
 }
 
 @NgModule({

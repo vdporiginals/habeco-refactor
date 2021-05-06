@@ -1,15 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { ListPageRoutingModule } from './list-routing.module';
-
-import { ListPage } from './list.page';
 import { BaseListLayoutComponentModule } from 'src/app/layout/base-list-layout/base-list-layout.component';
+import { BaseListDetailComponentModule } from 'src/app/ui/base-list-detail/base-list-detail.component';
 import { BaseListWarehouseComponentModule } from 'src/app/ui/base-list-warehouse/base-list-warehouse.component';
-import { ListMaintainPagePageRoutingModule } from '../maintain/list-maintain-page/list-maintain-page-routing.module';
+import { DetailModalComponent } from '../detail-modal/detail-modal.component';
+import { ListPageRoutingModule } from './list-routing.module';
+import { ListPage } from './list.page';
 
 @NgModule({
   imports: [
@@ -19,8 +17,8 @@ import { ListMaintainPagePageRoutingModule } from '../maintain/list-maintain-pag
     ListPageRoutingModule,
     BaseListWarehouseComponentModule,
     BaseListLayoutComponentModule,
-    ListMaintainPagePageRoutingModule,
+    BaseListDetailComponentModule,
   ],
-  declarations: [ListPage],
+  declarations: [ListPage, DetailModalComponent],
 })
 export class ListPageModule {}

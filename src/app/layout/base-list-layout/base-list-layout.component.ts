@@ -6,12 +6,13 @@ import {
   EventEmitter,
   Input,
   NgModule,
+  OnChanges,
   OnInit,
   Output,
   TemplateRef,
 } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { BackButtonComponentModule } from 'src/app/ui/back-button/back-button.component';
@@ -30,7 +31,7 @@ import {
   styleUrls: ['./base-list-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BaseListLayoutComponent implements OnInit {
+export class BaseListLayoutComponent implements OnInit, OnChanges {
   @Input() listItemClient = [];
   @Input() searchParams = 'name';
   @Input() listSegment;
@@ -42,7 +43,6 @@ export class BaseListLayoutComponent implements OnInit {
   @Input() currentSegment;
   @Output() filterResult = new EventEmitter();
   @Output() segmentSelect = new EventEmitter();
-
   @Output() public searchItemsClient: Observable<
     any | unknown
   > = this.search$().pipe(
@@ -77,12 +77,33 @@ export class BaseListLayoutComponent implements OnInit {
   @ContentChild('item', { static: false }) listCard!: TemplateRef<any>;
   @ContentChild('detail', { static: false }) detailCard!: TemplateRef<any>;
   @ContentChild('filter', { static: false }) baseFilter!: TemplateRef<any>;
+  from;
+  isModal = false;
   public textSearch: FormControl;
-
-  constructor() {}
+  constructor(private router: Router) {
+    if (this.router.getCurrentNavigation()) {
+      this.from = this.router.getCurrentNavigation().extras.state.from || null;
+    } else {
+      this.isModal = true;
+    }
+  }
 
   ngOnInit() {}
-
+  ngOnChanges(changes) {
+    if (changes.currentSegment?.firstChange === false) {
+      switch (changes.currentSegment.currentValue) {
+        case '2' || 2:
+          this.from = 'from-warehouse';
+          break;
+        case '3' || 3:
+          this.from = 'from-warehouse';
+          break;
+        default:
+          this.from = 'from-maintain';
+          break;
+      }
+    }
+  }
   private search$(): Observable<string> {
     this.textSearch = new FormControl('');
 
