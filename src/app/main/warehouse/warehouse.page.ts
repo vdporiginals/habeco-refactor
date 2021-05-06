@@ -34,7 +34,8 @@ export class WarehousePage implements OnInit {
     {
       name: 'Danh sách',
       icon: 'assets/main/danh_sach.svg',
-      route: '/settings',
+      route: '/list',
+      routeState: 'from-warehouse'
     },
   ];
   constructor() {}

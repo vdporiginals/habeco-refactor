@@ -1,14 +1,16 @@
-<!-- <app-base-list-layout
+<app-base-list-layout
   [defaultHref]="'/maintain'"
   [fromMaintain]="true"
   [listSegment]="listSegment"
+  [currentSegment]="currentSegment"
   (segmentSelect)="currentSegment = $event"
   [listItemClient]="apiCard"
   [searchParams]="'headerVal'"
+  [fromList]="true"
   (searchItemsClient)="listCard = $event"
   [headerTitle]="'Danh sách bảo dưỡng'"
 >
   <ng-template #item>
     <app-base-list-warehouse [listCard]="listCard"></app-base-list-warehouse>
   </ng-template>
-</app-base-list-layout> -->
+</app-base-list-layout>

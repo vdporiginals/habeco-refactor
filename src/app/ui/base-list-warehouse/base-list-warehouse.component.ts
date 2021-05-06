@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, NgModule, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+  OnInit,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ListCardComponentModule } from '../list-card/list-card.component';
@@ -14,7 +20,9 @@ export class BaseListWarehouseComponent implements OnInit {
   @Input() listCard;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.listCard);
+  }
 }
 
 @NgModule({

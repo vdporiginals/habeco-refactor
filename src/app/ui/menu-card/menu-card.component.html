@@ -1,6 +1,7 @@
 <div
   class="home-item"
   [routerLink]="menu.route"
+  [state]="{ from: menu.routeState }"
   (click)="menu.route == null ? openQRModal(menu.type) : ''"
 >
   <img [src]="menu.icon" />

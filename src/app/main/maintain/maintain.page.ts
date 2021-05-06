@@ -17,30 +17,31 @@ export class MaintainPage implements OnInit {
       name: 'Nhập bảo dưỡng',
       icon: 'assets/main/nhap_bao_duong.svg',
       route: null,
-      type: ModalQRType.addMaintain
+      type: ModalQRType.addMaintain,
     },
     {
       name: 'Thêm linh kiện',
       icon: 'assets/main/them_linh_kien.svg',
       route: null,
-      type: ModalQRType.maintainAddAccess
+      type: ModalQRType.maintainAddAccess,
     },
     {
       name: 'Xuất bảo dưỡng',
       icon: 'assets/main/xuat_bao_duong.svg',
       route: null,
-      type: ModalQRType.exportMaintain
+      type: ModalQRType.exportMaintain,
     },
     {
       name: 'Tra cứu',
       icon: 'assets/main/tra_cuu.svg',
       route: null,
-      type: ModalQRType.searchMaintain
+      type: ModalQRType.searchMaintain,
     },
     {
       name: 'Danh sách',
       icon: 'assets/main/danh_sach.svg',
-      route: '/settings',
+      route: '/list',
+      routeState: 'from-maintain',
     },
   ];
   constructor() {}

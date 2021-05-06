@@ -17,7 +17,12 @@ import { Observable } from 'rxjs';
 import { BackButtonComponentModule } from 'src/app/ui/back-button/back-button.component';
 import { BaseFilterComponentModule } from 'src/app/ui/base-filter/base-filter.component';
 import { ListSegmentComponentModule } from 'src/app/ui/list-segment/list-segment.component';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  startWith,
+  switchMap,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-base-list-layout',
@@ -33,6 +38,8 @@ export class BaseListLayoutComponent implements OnInit {
   @Input() headerTitle;
   @Input() fromMaintain;
   @Input() fromWarehouse;
+  @Input() fromList;
+  @Input() currentSegment;
   @Output() filterResult = new EventEmitter();
   @Output() segmentSelect = new EventEmitter();
 
@@ -42,6 +49,8 @@ export class BaseListLayoutComponent implements OnInit {
     distinctUntilChanged(),
     debounceTime(700),
     switchMap((val) => {
+      console.log(val);
+
       //   this.params[this.searchParams] = val;
       const searchText = this.nonAccentVietnamese(val);
       return this.listItemClient.filter((a) =>
@@ -68,13 +77,15 @@ export class BaseListLayoutComponent implements OnInit {
   @ContentChild('item', { static: false }) listCard!: TemplateRef<any>;
   @ContentChild('detail', { static: false }) detailCard!: TemplateRef<any>;
   @ContentChild('filter', { static: false }) baseFilter!: TemplateRef<any>;
-  public readonly textSearch: FormControl = new FormControl();
+  public textSearch: FormControl;
 
   constructor() {}
 
   ngOnInit() {}
 
   private search$(): Observable<string> {
+    this.textSearch = new FormControl('');
+
     return this.textSearch.valueChanges;
   }
 

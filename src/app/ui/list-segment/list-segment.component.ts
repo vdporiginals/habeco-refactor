@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, NgModule, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  NgModule,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
@@ -11,9 +19,15 @@ import { IonicModule } from '@ionic/angular';
 })
 export class ListSegmentComponent implements OnInit {
   @Input() listSeg;
+  @Input() currentSegment;
+  @Output() segmentChange = new EventEmitter();
   constructor() {}
 
   ngOnInit() {}
+
+  segmentChanged(ev) {
+    this.segmentChange.emit(ev.detail.value);
+  }
 }
 
 @NgModule({

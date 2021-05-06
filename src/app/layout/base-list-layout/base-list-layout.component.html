@@ -3,24 +3,32 @@
     <ion-col size="12">
       <app-back-button [defaultHref]="defaultHref"></app-back-button>
     </ion-col>
-    <ng-template ngFor let-item let-i="index" [ngForOf]="listSegment">
-      <ion-row>
-        <app-list-segment [listSeg]="item"></app-list-segment>
-      </ion-row>
-    </ng-template>
-    <ion-row>
+
+    <app-list-segment
+      *ngIf="fromList"
+      [currentSegment]="currentSegment"
+      (segmentChange)="segmentSelect.emit($event)"
+      [listSeg]="listSegment"
+    ></app-list-segment>
+
+    <ion-row class="row_flex">
       <ion-col>
         <h3>
           {{ headerTitle }}
         </h3>
       </ion-col>
-      <ion-col *ngIf="fromMaintain">
+      <ion-col size="2" *ngIf="fromMaintain">
         <img src="assets/icon/search_icon.svg" alt="" />
       </ion-col>
     </ion-row>
-    <ng-container *ngTemplateOutlet="baseFilter">
-      <ion-col>
-        <input *ngIf="fromWarehouse" type="text" [formControl]="textSearch" />
+    <ion-row class="ion-align-items-center">
+      <ion-col size="2"> <p>Bộ lọc:</p></ion-col>
+      <ion-col size="6">
+        <input
+          [style.display]="!fromWarehouse ? 'none' : 'block'"
+          type="text"
+          [formControl]="textSearch"
+        />
         <ion-select
           *ngIf="fromMaintain"
           value="3"
@@ -34,10 +42,10 @@
           <ion-select-option value="6">Bảo dưỡng thất bại</ion-select-option>
         </ion-select>
       </ion-col>
-    </ng-container>
+    </ion-row>
   </ion-grid>
 </ion-header>
-<ion-content slot="fixed" [fullscreen]="true">
+<ion-content>
   <div class="router">
     <ng-container *ngTemplateOutlet="listCard"></ng-container>
     <ng-container *ngTemplateOutlet="detailCard"></ng-container>

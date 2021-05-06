@@ -1,3 +1,5 @@
-<p>
-  list-segment works!
-</p>
+<ion-segment (ionChange)="segmentChanged($event)" [value]="currentSegment">
+  <ion-segment-button *ngFor="let item of listSeg" [value]="item.value">
+    <ion-label>{{ item.name }}</ion-label>
+  </ion-segment-button>
+</ion-segment>

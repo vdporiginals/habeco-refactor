@@ -1,0 +1,15 @@
+.row_flex {
+  justify-content: center;
+  align-items: center;
+}
+ion-header {
+  height: 230px;
+  display: flex;
+  align-items: center;
+}
+ion-content {
+  height: calc(100vh - 230px);
+}
+.router {
+  padding: 0 10px;
+}
