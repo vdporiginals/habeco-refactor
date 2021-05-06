@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalType } from 'src/app/models/modal-type.enum';
+import { ModalQRType } from 'src/app/models/modal-type.enum';
 
 @Component({
   selector: 'app-maintain',
@@ -17,25 +17,25 @@ export class MaintainPage implements OnInit {
       name: 'Nhập bảo dưỡng',
       icon: 'assets/main/nhap_bao_duong.svg',
       route: null,
-      type: ModalType.addMaintain
+      type: ModalQRType.addMaintain
     },
     {
       name: 'Thêm linh kiện',
       icon: 'assets/main/them_linh_kien.svg',
       route: null,
-      type: ModalType.maintainAddAccess
+      type: ModalQRType.maintainAddAccess
     },
     {
       name: 'Xuất bảo dưỡng',
       icon: 'assets/main/xuat_bao_duong.svg',
       route: null,
-      type: ModalType.exportMaintain
+      type: ModalQRType.exportMaintain
     },
     {
       name: 'Tra cứu',
       icon: 'assets/main/tra_cuu.svg',
       route: null,
-      type: ModalType.searchMaintain
+      type: ModalQRType.searchMaintain
     },
     {
       name: 'Danh sách',

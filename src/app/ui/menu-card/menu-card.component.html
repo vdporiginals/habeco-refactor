@@ -1,5 +1,8 @@
-<div class="home-item" [routerLink]="menu.route" (click)="menu.route == null ? openQRModal(menu.type):''">
-  <img [src]="menu.icon">
-  <p>{{menu.name}}
-  </p>
+<div
+  class="home-item"
+  [routerLink]="menu.route"
+  (click)="menu.route == null ? openQRModal(menu.type) : ''"
+>
+  <img [src]="menu.icon" />
+  <p>{{ menu.name }}</p>
 </div>

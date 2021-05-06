@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { ListCardComponentModule } from '../list-card/list-card.component';
 
 @Component({
   selector: 'app-base-list-warehouse',
@@ -6,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./base-list-warehouse.component.scss'],
 })
 export class BaseListWarehouseComponent implements OnInit {
-
-  constructor() { }
+  @Input() listCard;
+  constructor() {}
 
   ngOnInit() {}
-
 }
+
+@NgModule({
+  declarations: [BaseListWarehouseComponent],
+  imports: [IonicModule, RouterModule, ListCardComponentModule, CommonModule],
+  exports: [BaseListWarehouseComponent],
+})
+export class BaseListWarehouseComponentModule {}

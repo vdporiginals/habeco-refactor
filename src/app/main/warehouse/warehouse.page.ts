@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalType } from 'src/app/models/modal-type.enum';
+import { ModalQRType } from 'src/app/models/modal-type.enum';
 
 @Component({
   selector: 'app-warehouse',
@@ -17,19 +17,19 @@ export class WarehousePage implements OnInit {
       name: 'Nhập kho',
       icon: 'assets/main/nhap_kho.svg',
       route: null,
-      type: ModalType.addWarehouse,
+      type: ModalQRType.addWarehouse,
     },
     {
       name: 'Xuất kho',
       icon: 'assets/main/xuat_kho.svg',
       route: null,
-      type: ModalType.exportWarehouse,
+      type: ModalQRType.exportWarehouse,
     },
     {
       name: 'Tra cứu',
       icon: 'assets/main/tra_cuu.svg',
       route: null,
-      type: ModalType.searchWareHouse,
+      type: ModalQRType.searchWareHouse,
     },
     {
       name: 'Danh sách',

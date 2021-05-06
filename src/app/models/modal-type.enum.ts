@@ -1,4 +1,4 @@
-export enum ModalType {
+export enum ModalQRType {
   searchMaintain = 'search-maintain',
   searchWareHouse = 'search-wareHouse',
   maintainAddAccess = 'maintain-accessories',

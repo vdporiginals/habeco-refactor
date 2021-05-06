@@ -1,3 +1,18 @@
-<p>
-  list-card works!
-</p>
+<div class="card-list">
+  <div class="card-list-box card-list-serial">
+    <div class="label">
+      {{ listItem.header.label }}
+    </div>
+    <div class="content">
+      {{ listItem.header.value }}
+    </div>
+  </div>
+  <div class="card-list-box">
+    <div class="label">
+      {{ listItem.content.label }}
+    </div>
+    <div class="content">
+      {{ listItem.content.value }}
+    </div>
+  </div>
+</div>
