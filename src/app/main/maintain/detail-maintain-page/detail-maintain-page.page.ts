@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail-maintain-page.page.scss'],
 })
 export class DetailMaintainPagePage implements OnInit {
+  listCard = [];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

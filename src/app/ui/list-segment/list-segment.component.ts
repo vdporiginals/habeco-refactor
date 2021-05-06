@@ -4,21 +4,21 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'app-list-card',
-  templateUrl: './list-card.component.html',
-  styleUrls: ['./list-card.component.scss'],
+  selector: 'app-list-segment',
+  templateUrl: './list-segment.component.html',
+  styleUrls: ['./list-segment.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListCardComponent implements OnInit {
-  @Input() listItem;
+export class ListSegmentComponent implements OnInit {
+  @Input() listSeg;
   constructor() {}
 
   ngOnInit() {}
 }
 
 @NgModule({
-  declarations: [ListCardComponent],
+  declarations: [ListSegmentComponent],
   imports: [IonicModule, RouterModule, CommonModule],
-  exports: [ListCardComponent],
+  exports: [ListSegmentComponent],
 })
-export class ListCardComponentModule {}
+export class ListSegmentComponentModule {}

@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./import-page.page.scss'],
 })
 export class ImportPagePage implements OnInit {
+  listSegment = [];
+  listCard = [];
+  apiCard = [];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./export-page.page.scss'],
 })
 export class ExportPagePage implements OnInit {
-
+  listSegment = [];
+  listCard = [];
+  apiCard = [];
   constructor() { }
 
   ngOnInit() {

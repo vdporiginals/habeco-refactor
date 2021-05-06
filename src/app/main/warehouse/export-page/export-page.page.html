@@ -1,9 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>export-page</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+<app-base-list-layout
+  [defaultHref]="'/maintain'"
+  [fromWarehouse]="true"
+  [listSegment]="listSegment"
+  (segmentSelect)="$event"
+  [listItemClient]="apiCard"
+  [searchParams]="'name'"
+  (searchItemsClient)="listCard = $event"
+  [headerTitle]="'Danh sách xuất kho'"
+>
+  <ng-template #item>
+    <app-base-list-warehouse [listCard]="listCard"></app-base-list-warehouse>
+  </ng-template>
+</app-base-list-layout>

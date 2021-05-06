@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-maintain-page.page.scss'],
 })
 export class ListMaintainPagePage implements OnInit {
+  listSegment = [];
+  listCard = [];
+  apiCard = [];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
