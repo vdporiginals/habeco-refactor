@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -58,6 +59,7 @@ export class ListPage implements OnInit {
     },
   ];
   from: string;
+  currentTitle = 'Danh sách bảo dưỡng';
   constructor(private router: Router) {
     this.from = this.router.getCurrentNavigation().extras.state.from;
   }
@@ -69,11 +71,28 @@ export class ListPage implements OnInit {
       this.currentSegment = 2;
     }
 
+    if (this.currentSegment === 2) {
+      this.currentTitle = 'Danh sách xuất kho';
+    }
+    if (this.currentSegment === 3) {
+      this.currentTitle = 'Danh sách nhập kho';
+    }
+
     this.listCard = this.apiCard;
   }
 
   onSegmentChange(ev) {
     this.currentSegment = ev;
+
+    if (this.currentSegment == 2) {
+      this.currentTitle = 'Danh sách xuất kho';
+    }
+    if (this.currentSegment == 3) {
+      this.currentTitle = 'Danh sách nhập kho';
+    }
+    if (this.currentSegment == 1) {
+      this.currentTitle = 'Danh sách bảo dưỡng';
+    }
     this.listCard = [
       {
         headerVal: '215151561',

@@ -1,3 +1,23 @@
-<app-main-layout>
-  <div>abc</div>
+<app-main-layout [noScroll]="true">
+  <ng-template #item>
+    <div class="login">
+      <ion-grid>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-input placeholder="Tên đăng nhập"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-input type="password" placeholder="Mật khẩu"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-button color="light" [routerLink]="['/home']">
+            Đăng nhập
+          </ion-button>
+        </ion-col>
+      </ion-grid>
+    </div>
+  </ng-template>
 </app-main-layout>

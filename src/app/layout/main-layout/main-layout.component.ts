@@ -18,6 +18,7 @@ import { IonicModule } from '@ionic/angular';
 })
 export class MainLayoutComponent implements OnInit {
   @Input() menuItems;
+  @Input() noScroll = false;
   @ContentChild('item', { static: false }) listMenu!: TemplateRef<any>;
   @ContentChild('login', { static: false }) loginTemp!: TemplateRef<any>;
   constructor() {}

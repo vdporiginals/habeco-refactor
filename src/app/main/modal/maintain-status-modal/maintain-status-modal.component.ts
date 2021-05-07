@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-maintain-status-modal',
@@ -6,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./maintain-status-modal.component.scss'],
 })
 export class MaintainStatusModalComponent implements OnInit {
+  @Input() model: any;
 
-  constructor() { }
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {}
 
+  dismiss() {
+    this.modalController.dismiss(this.model);
+  }
+
+  closeModal() {
+    this.modalController.dismiss();
+  }
 }

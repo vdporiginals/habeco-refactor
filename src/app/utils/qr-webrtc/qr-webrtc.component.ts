@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Inject,
   Input,
   NgModule,
   OnDestroy,
@@ -13,7 +14,7 @@ import {
 import jsQR from 'jsqr';
 
 import { Plugins, PermissionType } from '@capacitor/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { BackButtonComponentModule } from 'src/app/ui/back-button/back-button.component';
@@ -22,6 +23,7 @@ import { ModalQRType } from 'src/app/models/modal-type.enum';
 import { AccessoriesAddModalComponent } from 'src/app/main/modal/accessories-add-modal/accessories-add-modal.component';
 import { DetailModalComponent } from 'src/app/main/modal/detail-modal/detail-modal.component';
 import { InputCodeModalComponent } from 'src/app/main/modal/input-code-modal/input-code-modal.component';
+import { AlertService } from 'src/app/services/alert.service';
 const { Permissions, Camera } = Plugins;
 @Component({
   selector: 'app-qr-webrtc',
@@ -34,10 +36,14 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
   height = 200;
   width = 200;
   canvas;
-  video = document.createElement('video');
+  video = this.document.createElement('video');
   currentCode = new Subject();
   currentCode$ = this.currentCode.asObservable();
-  constructor(private modalController: ModalController) {}
+  constructor(
+    @Inject(DOCUMENT) private document,
+    private alertService: AlertService,
+    private modalController: ModalController
+  ) {}
 
   ngOnInit() {
     this.reqPer();
@@ -236,6 +242,41 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
         this.openDetailModal(data, 'from-warehouse');
       }
 
+      if (this.type === ModalQRType.exportMaintain) {
+        setTimeout(() => {
+          this.alertService.presentSuccessAlert(
+            'Thông báo',
+            `${data} được xuất bảo dưỡng thành công!`
+          );
+        }, 3000);
+      }
+
+      if (this.type === ModalQRType.exportWarehouse) {
+        setTimeout(() => {
+          this.alertService.presentSuccessAlert(
+            'Thông báo',
+            `${data} được xuất kho thành công!`
+          );
+        }, 3000);
+      }
+
+      if (this.type === ModalQRType.addWarehouse) {
+        setTimeout(() => {
+          this.alertService.presentSuccessAlert(
+            'Thông báo',
+            `${data} được nhập kho thành công!`
+          );
+        }, 3000);
+      }
+
+      if (this.type === ModalQRType.exportWarehouse) {
+        setTimeout(() => {
+          this.alertService.presentSuccessAlert(
+            'Thông báo',
+            `${data} được xuất thành công!`
+          );
+        }, 3000);
+      }
       return cancelAnimationFrame(this.tick.bind(this));
     } else {
       this.currentCode.next();
@@ -244,6 +285,9 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async openDetailModal(data, from?, type = 2) {
+    if (type === 2) {
+      data.type = 2;
+    }
     const modal = await this.modalController.create({
       component: DetailModalComponent,
       componentProps: {
@@ -253,7 +297,7 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
           contentLabel: 'Thời gian xuất kho',
           contentDate: '2020-03-11',
           modalData: '/detail/1',
-          type,
+          type: data.type,
         },
         from,
       },

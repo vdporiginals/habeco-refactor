@@ -1,8 +1,6 @@
-<ion-content slot="fixed" [fullscreen]="true">
-
+<ion-content slot="fixed" [fullscreen]="true" [scrollY]="noScroll !== true">
   <div class="head">
-    <img src="assets/icon/main-logo.png">
-
+    <img src="assets/icon/main-logo.png" />
   </div>
   <div class="router">
     <ng-container *ngTemplateOutlet="listMenu"></ng-container>

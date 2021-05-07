@@ -8,7 +8,7 @@
   [searchParams]="'headerVal'"
   [fromList]="true"
   (searchItemsClient)="listCard = $event"
-  [headerTitle]="'Danh sách bảo dưỡng'"
+  [headerTitle]="currentTitle"
 >
   <ng-template #item>
     <app-base-list-warehouse

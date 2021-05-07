@@ -1,0 +1,19 @@
+ion-grid {
+  height: 100%;
+  padding: 13px;
+  display: grid;
+  /* justify-content: center; */
+  margin: 70px 0px;
+  /* height: 483px; */
+  text-align: center;
+}
+ion-item {
+  border-radius: 20px;
+  background-color: var(--ion-color-light);
+}
+ion-input {
+  --background: transparent;
+}
+ion-button {
+  margin-top: 60px;
+}
