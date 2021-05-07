@@ -6,7 +6,7 @@ import {
   NgModule,
   OnInit,
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
 
 @Component({
@@ -18,11 +18,19 @@ import { IonicModule, ModalController } from '@ionic/angular';
 export class BackButtonComponent implements OnInit {
   @Input() defaultHref;
   @Input() isModal;
-  constructor(private modalController: ModalController) {}
+  constructor(
+    private modalController: ModalController,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
   closeModal() {
+    this.modalController.dismiss();
+  }
+
+  backToHome() {
+    this.router.navigate(['/home']);
     this.modalController.dismiss();
   }
 }

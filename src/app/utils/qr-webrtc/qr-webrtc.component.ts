@@ -103,8 +103,8 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
       this.canvasElement.nativeElement.hidden = false;
       // outputContainer.hidden = false;
 
-      this.canvasElement.nativeElement.height = 180;
-      this.canvasElement.nativeElement.width = 180;
+      this.canvasElement.nativeElement.height = this.height;
+      this.canvasElement.nativeElement.width = this.width;
       this.canvas.drawImage(
         this.video,
         0,
