@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
-import { DetailModalComponent } from 'src/app/main/detail-modal/detail-modal.component';
+import { DetailModalComponent } from 'src/app/main/modal/detail-modal/detail-modal.component';
 
 @Component({
   selector: 'app-list-card',

@@ -1,0 +1,35 @@
+.modal-create-wrap {
+  padding: 10px 20px;
+  .title {
+    text-align: center;
+    font-size: 16px;
+    color: #343434;
+    padding: 15px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .form-group {
+    border-bottom: 1px solid rgba($color: #707070, $alpha: 0.2);
+    border-top: 1px solid rgba($color: #707070, $alpha: 0.2);
+    padding: 10px 0;
+    .input-item {
+      margin-bottom: 15px;
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #181818;
+      }
+      input {
+        width: 100%;
+      }
+    }
+  }
+  .button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    ion-button {
+      width: 140px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<div class="modal-create-wrap">
+  <div class="title">Thêm mới linh kiện sử dụng</div>
+  <form class="form-group" [formGroup]="accessForm">
+    <div class="input-item">
+      <label for="item.condition"> Linh kiện </label>
+      <input class="base-input-style" formControlName="accessories" />
+    </div>
+    <div class="input-item">
+      <label for="item.condition">Số lượng </label>
+      <input
+        class="base-input-style"
+        formControlName="numb"
+        placeholder="Nhập số lượng"
+      />
+    </div>
+  </form>
+  <div class="button">
+    <ion-button color="medium" (click)="closeModal()"> Hủy bỏ </ion-button>
+    <ion-button (click)="dismiss()"> Lưu </ion-button>
+  </div>
+</div>

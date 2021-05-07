@@ -1,7 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
+import {
+  AccessoriesAddModalComponent,
+  AccessoriesAddModalComponentModule,
+} from 'src/app/main/modal/accessories-add-modal/accessories-add-modal.component';
 import { DetailCardComponentModule } from '../detail-card/detail-card.component';
 
 @Component({
@@ -11,14 +15,28 @@ import { DetailCardComponentModule } from '../detail-card/detail-card.component'
 })
 export class BaseListDetailComponent implements OnInit {
   @Input() detailCard;
-  constructor() {}
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {}
+
+  async openAddAccessories() {
+    const modal = await this.modalController.create({
+      component: AccessoriesAddModalComponent,
+      cssClass: 'modal-create-class',
+    });
+    await modal.present();
+  }
 }
 
 @NgModule({
   declarations: [BaseListDetailComponent],
-  imports: [IonicModule, RouterModule, DetailCardComponentModule, CommonModule],
+  imports: [
+    IonicModule,
+    RouterModule,
+    AccessoriesAddModalComponentModule,
+    DetailCardComponentModule,
+    CommonModule,
+  ],
   exports: [BaseListDetailComponent],
 })
 export class BaseListDetailComponentModule {}
