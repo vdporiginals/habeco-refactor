@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="16" height="16" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Close" d="M.306,14.847a1.047,1.047,0,0,0,1.479,0L7.576,9.056l5.791,5.791a1.046,1.046,0,0,0,1.479-1.479L9.056,7.576l5.791-5.791A1.046,1.046,0,0,0,13.368.306L7.576,6.1,1.785.306A1.046,1.046,0,0,0,.306,1.785L6.1,7.576.306,13.368A1.047,1.047,0,0,0,.306,14.847Z"/>
+    </clipPath>
+  </defs>
+  <g id="Group_21186" data-name="Group 21186" transform="translate(-338 -359)">
+    <rect id="Rectangle_2394" data-name="Rectangle 2394" width="21" height="21" transform="translate(338 359)" fill="#fff"/>
+    <g id="_Icons_Close" data-name="_Icons / Close" transform="translate(341 362)" clip-path="url(#clip-path)">
+      <path id="Close-2" data-name="Close" d="M.306,14.847a1.047,1.047,0,0,0,1.479,0L7.576,9.056l5.791,5.791a1.046,1.046,0,0,0,1.479-1.479L9.056,7.576l5.791-5.791A1.046,1.046,0,0,0,13.368.306L7.576,6.1,1.785.306A1.046,1.046,0,0,0,.306,1.785L6.1,7.576.306,13.368A1.047,1.047,0,0,0,.306,14.847Z" transform="translate(0 0)"/>
+    </g>
+  </g>
+</svg>

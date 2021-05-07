@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Input,
   NgModule,
   OnDestroy,
   OnInit,
@@ -17,6 +18,10 @@ import { RouterModule } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { BackButtonComponentModule } from 'src/app/ui/back-button/back-button.component';
 import { Subject } from 'rxjs';
+import { ModalQRType } from 'src/app/models/modal-type.enum';
+import { AccessoriesAddModalComponent } from 'src/app/main/modal/accessories-add-modal/accessories-add-modal.component';
+import { DetailModalComponent } from 'src/app/main/modal/detail-modal/detail-modal.component';
+import { InputCodeModalComponent } from 'src/app/main/modal/input-code-modal/input-code-modal.component';
 const { Permissions, Camera } = Plugins;
 @Component({
   selector: 'app-qr-webrtc',
@@ -24,9 +29,10 @@ const { Permissions, Camera } = Plugins;
   styleUrls: ['./qr-webrtc.component.scss'],
 })
 export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
+  @Input() type: ModalQRType;
   @ViewChild('canvas') canvasElement: ElementRef;
-  height = 180;
-  width = 180;
+  height = 200;
+  width = 200;
   canvas;
   video = document.createElement('video');
   currentCode = new Subject();
@@ -35,13 +41,13 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.reqPer();
-    this.video.width = 180;
-    this.video.height = 180;
+    this.video.width = 200;
+    this.video.height = 200;
   }
 
   ngAfterViewInit() {
-    this.canvasElement.nativeElement.width = 180;
-    this.canvasElement.nativeElement.height = 180;
+    this.canvasElement.nativeElement.width = 200;
+    this.canvasElement.nativeElement.height = 200;
     this.canvas = this.canvasElement.nativeElement.getContext('2d');
     navigator.mediaDevices
       .getUserMedia({ video: { facingMode: 'environment' } })
@@ -119,19 +125,69 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
       this.drawLine({ x: 0, y: 0 }, { x: 40, y: 0 }, '#00A050', 10);
       this.drawLine({ x: 0, y: 0 }, { x: 0, y: 40 }, '#00A050', 10);
 
-      this.drawLine({ x: 180, y: 0 }, { x: 140, y: 0 }, '#00A050', 10);
-      this.drawLine({ x: 180, y: 0 }, { x: 180, y: 40 }, '#00A050', 10);
+      this.drawLine(
+        { x: this.width, y: 0 },
+        { x: this.width - 40, y: 0 },
+        '#00A050',
+        10
+      );
+      this.drawLine(
+        { x: this.width, y: 0 },
+        { x: this.width, y: 40 },
+        '#00A050',
+        10
+      );
 
-      this.drawLine({ x: 0, y: 180 }, { x: 0, y: 140 }, '#00A050', 10);
-      this.drawLine({ x: 0, y: 180 }, { x: 40, y: 180 }, '#00A050', 10);
+      this.drawLine(
+        { x: 0, y: this.height },
+        { x: 0, y: this.height - 40 },
+        '#00A050',
+        10
+      );
+      this.drawLine(
+        { x: 0, y: this.height },
+        { x: 40, y: this.height },
+        '#00A050',
+        10
+      );
 
-      this.drawLine({ x: 180, y: 180 }, { x: 140, y: 180 }, '#00A050', 10);
-      this.drawLine({ x: 180, y: 180 }, { x: 180, y: 140 }, '#00A050', 10);
+      this.drawLine(
+        { x: this.width, y: this.height },
+        { x: this.width - 40, y: this.height },
+        '#00A050',
+        10
+      );
+      this.drawLine(
+        { x: this.width, y: this.height },
+        { x: this.width, y: this.height - 40 },
+        '#00A050',
+        10
+      );
 
-      this.drawLine({ x: 90, y: 90 }, { x: 110, y: 90 }, '#00A050', 2);
-      this.drawLine({ x: 90, y: 90 }, { x: 90, y: 110 }, '#00A050', 2);
-      this.drawLine({ x: 90, y: 90 }, { x: 70, y: 90 }, '#00A050', 2);
-      this.drawLine({ x: 90, y: 90 }, { x: 90, y: 70 }, '#00A050', 2);
+      this.drawLine(
+        { x: this.width / 2, y: this.height / 2 },
+        { x: this.width / 2 + 20, y: this.height / 2 },
+        '#00A050',
+        2
+      );
+      this.drawLine(
+        { x: this.width / 2, y: this.height / 2 },
+        { x: this.width / 2, y: this.height / 2 + 20 },
+        '#00A050',
+        2
+      );
+      this.drawLine(
+        { x: this.width / 2, y: this.height / 2 },
+        { x: this.width / 2 - 20, y: this.height / 2 },
+        '#00A050',
+        2
+      );
+      this.drawLine(
+        { x: this.width / 2, y: this.height / 2 },
+        { x: this.width / 2, y: this.height / 2 - 20 },
+        '#00A050',
+        2
+      );
       if (code) {
         this.drawLine(
           code.location.topLeftCorner,
@@ -168,11 +224,67 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     if (data) {
       this.currentCode.next(data);
+      if (this.type === ModalQRType.maintainAddAccess) {
+        this.openAddAccessModal(data);
+      }
+
+      if (this.type === ModalQRType.searchMaintain) {
+        this.openDetailModal(data, 'from-maintain', 1);
+      }
+
+      if (this.type === ModalQRType.searchWareHouse) {
+        this.openDetailModal(data, 'from-warehouse');
+      }
+
       return cancelAnimationFrame(this.tick.bind(this));
     } else {
       this.currentCode.next();
     }
     requestAnimationFrame(this.tick.bind(this));
+  }
+
+  async openDetailModal(data, from?, type = 2) {
+    const modal = await this.modalController.create({
+      component: DetailModalComponent,
+      componentProps: {
+        data: {
+          headerVal: '215151561',
+          headerLabel: 'Serial',
+          contentLabel: 'Thời gian xuất kho',
+          contentDate: '2020-03-11',
+          modalData: '/detail/1',
+          type,
+        },
+        from,
+      },
+    });
+
+    await modal.present();
+  }
+
+  async openInputCodeModal() {
+    const modal = await this.modalController.create({
+      component: InputCodeModalComponent,
+      cssClass: 'input-code-modal',
+      backdropDismiss: true,
+    });
+    modal.onDidDismiss().then((res) => {
+      console.log(res.data);
+    });
+    return await modal.present();
+  }
+
+  async openAddAccessModal(data) {
+    const modal = await this.modalController.create({
+      component: AccessoriesAddModalComponent,
+      componentProps: {
+        accessFormData: {
+          accessories: data,
+          numb: 1,
+        },
+      },
+    });
+    await modal.present();
   }
 
   closeModal() {

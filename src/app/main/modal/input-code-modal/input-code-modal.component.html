@@ -1,0 +1,11 @@
+<div class="modal_input">
+  <div class="close" (click)="closeModal()">
+    <ion-icon src="assets/icon/close.svg" alt=""> </ion-icon>
+  </div>
+  <div class="head">
+    <p>NHẬP MÃ BẰNG TAY</p>
+  </div>
+  <input [(ngModel)]="codeInput" name="codeInput" type="text" autofocus />
+  <p class="small">Nhập mã được in trên sản phẩm</p>
+  <button (click)="checkCode()">Check mã</button>
+</div>

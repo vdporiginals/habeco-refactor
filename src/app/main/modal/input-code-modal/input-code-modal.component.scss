@@ -1,0 +1,45 @@
+.modal_input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 100000000;
+  }
+  .head {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid black;
+    p {
+      font-size: 16px;
+    }
+  }
+  input {
+    border: none;
+    border-bottom: 1px solid black;
+    height: 40px;
+    margin-top: 20px;
+    &:focus {
+      outline: none;
+    }
+  }
+  .small {
+    font-size: 11px;
+    color: #707070;
+    margin-bottom: 15px;
+  }
+  button {
+    width: 90%;
+    height: 30px;
+    background-color: #00a050;
+    color: #ffffff;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 7px;
+  }
+}
