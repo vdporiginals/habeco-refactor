@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
+import { AccessoriesModalComponent } from '../accessories-modal/accessories-modal.component';
 
 @Component({
   selector: 'app-accessories-add-modal',
@@ -20,6 +21,7 @@ export class AccessoriesAddModalComponent implements OnInit {
     accessories: new FormControl(''),
     numb: new FormControl(''),
   });
+  binding;
   constructor(private modalController: ModalController) {}
   ngOnInit() {
     if (this.accessFormData) {
@@ -34,6 +36,17 @@ export class AccessoriesAddModalComponent implements OnInit {
   }
   closeModal() {
     this.modalController.dismiss();
+  }
+
+  async openAccessoriesModal() {
+    const modal = await this.modalController.create({
+      component: AccessoriesModalComponent,
+      cssClass: 'my-custom-class',
+    });
+    modal.onDidDismiss().then((res) => {
+      this.binding = res.data.data;
+    });
+    return await modal.present();
   }
 }
 

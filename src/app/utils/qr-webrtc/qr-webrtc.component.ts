@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { CommonModule, DOCUMENT } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -8,22 +9,19 @@ import {
   NgModule,
   OnDestroy,
   OnInit,
-  Renderer2,
   ViewChild,
 } from '@angular/core';
-import jsQR from 'jsqr';
-
-import { Plugins, PermissionType } from '@capacitor/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PermissionType, Plugins } from '@capacitor/core';
 import { IonicModule, ModalController } from '@ionic/angular';
-import { BackButtonComponentModule } from 'src/app/ui/back-button/back-button.component';
+import jsQR from 'jsqr';
 import { Subject } from 'rxjs';
-import { ModalQRType } from 'src/app/models/modal-type.enum';
 import { AccessoriesAddModalComponent } from 'src/app/main/modal/accessories-add-modal/accessories-add-modal.component';
 import { DetailModalComponent } from 'src/app/main/modal/detail-modal/detail-modal.component';
 import { InputCodeModalComponent } from 'src/app/main/modal/input-code-modal/input-code-modal.component';
+import { ModalQRType } from 'src/app/models/modal-type.enum';
 import { AlertService } from 'src/app/services/alert.service';
+
 const { Permissions, Camera } = Plugins;
 @Component({
   selector: 'app-qr-webrtc',
@@ -242,6 +240,10 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
         this.openDetailModal(data, 'from-warehouse');
       }
 
+      if (this.type === ModalQRType.addMaintain) {
+        this.openDetailModal(data, 'from-maintain', 1);
+      }
+
       if (this.type === ModalQRType.exportMaintain) {
         setTimeout(() => {
           this.alertService.presentSuccessAlert(
@@ -285,9 +287,9 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async openDetailModal(data, from?, type = 2) {
-    if (type === 2) {
-      data.type = 2;
-    }
+    // if (type === 2) {
+    //   data.type = 2;
+    // }
     const modal = await this.modalController.create({
       component: DetailModalComponent,
       componentProps: {
@@ -297,7 +299,7 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
           contentLabel: 'Thời gian xuất kho',
           contentDate: '2020-03-11',
           modalData: '/detail/1',
-          type: data.type,
+          type,
         },
         from,
       },

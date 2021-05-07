@@ -30,8 +30,14 @@ export class BackButtonComponent implements OnInit {
   }
 
   backToHome() {
-    this.router.navigate(['/home']);
-    this.modalController.dismiss();
+    this.router.navigate(['/home']).then(() => {
+      setTimeout(() => {
+        this.modalController.dismiss();
+      }, 0);
+      setTimeout(() => {
+        this.modalController.dismiss();
+      }, 500);
+    });
   }
 }
 
