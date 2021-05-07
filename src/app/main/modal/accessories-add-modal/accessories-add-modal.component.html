@@ -4,9 +4,11 @@
     <div class="input-item">
       <label for="item.condition"> Linh kiện </label>
       <ion-item (click)="openAccessoriesModal()">
-        <p>Chọn linh kiện</p>
+        <p>
+          {{ binding ? accessForm.get("accessories").value : "Chọn linh kiện" }}
+        </p>
       </ion-item>
-      <input class="base-input-style" formControlName="accessories" />
+      <!-- <input class="base-input-style" formControlName="accessories" /> -->
     </div>
     <div class="input-item">
       <label for="item.condition">Số lượng </label>

@@ -28,6 +28,7 @@ export class AccessoriesAddModalComponent implements OnInit {
       this.accessForm
         .get('accessories')
         .setValue(this.accessFormData.accessories);
+      this.binding = this.accessFormData.accessories;
       this.accessForm.get('numb').setValue(this.accessFormData.numb);
     }
   }
@@ -41,10 +42,12 @@ export class AccessoriesAddModalComponent implements OnInit {
   async openAccessoriesModal() {
     const modal = await this.modalController.create({
       component: AccessoriesModalComponent,
-      cssClass: 'my-custom-class',
+      cssClass: 'modal-create-class',
     });
     modal.onDidDismiss().then((res) => {
       this.binding = res.data.data;
+
+      this.accessForm.get('accessories').setValue(this.binding);
     });
     return await modal.present();
   }

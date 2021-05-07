@@ -38,12 +38,15 @@ export class AccessoriesModalComponent implements OnInit {
 
   ngOnInit() {}
 
-  closeModal(ev) {
-    console.log(ev);
-    this.modal.dismiss({
-      dismissed: true,
-      data: ev,
-    });
+  closeModal(ev?) {
+    if (ev) {
+      this.modal.dismiss({
+        dismissed: true,
+        data: ev,
+      });
+    } else {
+      this.modal.dismiss();
+    }
   }
 }
 
