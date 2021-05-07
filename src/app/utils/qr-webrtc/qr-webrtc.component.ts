@@ -277,6 +277,7 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
   async openAddAccessModal(data) {
     const modal = await this.modalController.create({
       component: AccessoriesAddModalComponent,
+      cssClass: 'modal-create-class',
       componentProps: {
         accessFormData: {
           accessories: data,
