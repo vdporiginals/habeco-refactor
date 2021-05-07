@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { ListCardComponentModule } from '../list-card/list-card.component';
+import { DetailCardComponentModule } from '../detail-card/detail-card.component';
 
 @Component({
   selector: 'app-base-list-detail',
@@ -10,7 +10,7 @@ import { ListCardComponentModule } from '../list-card/list-card.component';
   styleUrls: ['./base-list-detail.component.scss'],
 })
 export class BaseListDetailComponent implements OnInit {
-  @Input() listCard;
+  @Input() detailCard;
   constructor() {}
 
   ngOnInit() {}
@@ -18,7 +18,7 @@ export class BaseListDetailComponent implements OnInit {
 
 @NgModule({
   declarations: [BaseListDetailComponent],
-  imports: [IonicModule, RouterModule, ListCardComponentModule, CommonModule],
+  imports: [IonicModule, RouterModule, DetailCardComponentModule, CommonModule],
   exports: [BaseListDetailComponent],
 })
 export class BaseListDetailComponentModule {}

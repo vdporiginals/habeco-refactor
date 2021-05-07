@@ -18,6 +18,7 @@ import { ListCardComponentModule } from '../list-card/list-card.component';
 })
 export class BaseListWarehouseComponent implements OnInit {
   @Input() listCard;
+  @Input() from;
   constructor() {}
 
   ngOnInit() {

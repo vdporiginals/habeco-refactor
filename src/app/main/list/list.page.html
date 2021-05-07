@@ -11,6 +11,9 @@
   [headerTitle]="'Danh sách bảo dưỡng'"
 >
   <ng-template #item>
-    <app-base-list-warehouse [listCard]="listCard"></app-base-list-warehouse>
+    <app-base-list-warehouse
+      [from]="from"
+      [listCard]="listCard"
+    ></app-base-list-warehouse>
   </ng-template>
 </app-base-list-layout>

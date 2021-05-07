@@ -18,15 +18,19 @@ import { DetailModalComponent } from 'src/app/main/detail-modal/detail-modal.com
 })
 export class ListCardComponent implements OnInit {
   @Input() listItem;
+  @Input() from;
   constructor(private modalController: ModalController) {}
 
   ngOnInit() {}
 
   async openDetailModal(data) {
+    console.log(data);
+
     const modal = await this.modalController.create({
       component: DetailModalComponent,
       componentProps: {
         data,
+        from: this.from,
       },
     });
 

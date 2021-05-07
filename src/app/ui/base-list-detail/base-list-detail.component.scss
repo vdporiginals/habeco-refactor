@@ -1,0 +1,41 @@
+.base-card {
+  margin-top: 37px;
+  position: relative;
+  padding-bottom: 2px;
+  .title {
+    position: absolute;
+    top: -35px;
+    left: 16px;
+    padding-bottom: 40px;
+    background: var(--ion-color-primary);
+    padding-top: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    color: var(--ion-color-primary-contrast);
+    text-transform: uppercase;
+  }
+  ion-card {
+    overflow: visible;
+    position: relative;
+    color: var(--ion-color-warning-contrast);
+    margin: 15px 16px;
+  }
+  .card-btn {
+    position: absolute;
+    width: 103px;
+    height: 30px;
+    right: 15px;
+    top: -40px;
+    font-size: 11px;
+    img {
+      margin-right: 10px;
+    }
+  }
+}
+
+.card-detail {
+  ion-row {
+    border-bottom: 1px dashed var(--ion-color-primary-border);
+  }
+}

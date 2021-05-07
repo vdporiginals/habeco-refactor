@@ -1,5 +1,9 @@
-<app-base-list-layout [defaultHref]="null" [fromMaintain]="true" [headerTitle]="'Danh sách bảo dưỡng'">
+<app-base-list-layout
+  [defaultHref]="null"
+  [fromMaintain]="true"
+  [headerTitle]="title"
+>
   <ng-template #item>
-    <app-base-list-detail [listCard]="listCard"></app-base-list-detail>
+    <app-base-list-detail [detailCard]="detailCard"></app-base-list-detail>
   </ng-template>
 </app-base-list-layout>

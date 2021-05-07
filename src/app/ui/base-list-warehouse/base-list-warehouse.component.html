@@ -1,7 +1,7 @@
 <ion-grid>
   <ng-template ngFor let-item let-i="index" [ngForOf]="listCard">
     <ion-col size="12">
-      <app-list-card [listItem]="item"></app-list-card>
+      <app-list-card [listItem]="item" [from]="from"></app-list-card>
     </ion-col>
   </ng-template>
 </ion-grid>

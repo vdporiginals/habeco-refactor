@@ -1,3 +1,55 @@
-<p>
-  base-list-detail works!
-</p>
+<ion-grid>
+  <ion-col size="12">
+    <div class="card-detail base-card">
+      <span class="title"> HÀNG HÓA </span>
+      <ion-card>
+        <ion-grid>
+          <app-detail-card
+            [detailItem]="detailCard.goodsData"
+          ></app-detail-card>
+        </ion-grid>
+      </ion-card>
+    </div>
+    <div class="card-detail base-card">
+      <span class="title"> Thông tin </span>
+      <ion-card>
+        <ion-grid>
+          <app-detail-card [detailItem]="detailCard.infoData"></app-detail-card>
+        </ion-grid>
+      </ion-card>
+    </div>
+    <div class="card-table base-card">
+      <ion-button fill="outline" class="card-btn">
+        <img src="assets/icon/plus-icon.svg" alt="" /> Thêm mới
+      </ion-button>
+      <span class="title"> Linh kiện sử dụng </span>
+      <ion-card>
+        <app-detail-card
+          [type]="1"
+          [detailItem]="detailCard.accessoriesData"
+        ></app-detail-card>
+      </ion-card>
+    </div>
+    <div class="card-table base-card">
+      <span class="title"> Lịch sử thao tác </span>
+      <ion-card>
+        <app-detail-card
+          [type]="1"
+          [detailItem]="detailCard.historyAction"
+        ></app-detail-card>
+      </ion-card>
+    </div>
+    <div class="card-table base-card">
+      <ion-button fill="outline" class="card-btn">
+        <img src="assets/icon/plus-icon.svg" alt="" /> Thêm mới
+      </ion-button>
+      <span class="title"> Lịch sử bảo dưỡng </span>
+      <ion-card>
+        <app-detail-card
+          [type]="1"
+          [detailItem]="detailCard.historyMaintain"
+        ></app-detail-card>
+      </ion-card>
+    </div>
+  </ion-col>
+</ion-grid>

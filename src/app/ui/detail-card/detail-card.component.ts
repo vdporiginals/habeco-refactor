@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+  OnInit,
+} from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { ListCardComponentModule } from '../list-card/list-card.component';
 
 @Component({
   selector: 'app-detail-card',
@@ -7,9 +17,17 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DetailCardComponent implements OnInit {
+  @Input() detailItem;
+  @Input() type;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {}
-
+  ngOnInit() {
+    console.log(this.detailItem);
+  }
 }
+@NgModule({
+  declarations: [DetailCardComponent],
+  imports: [IonicModule, RouterModule, ListCardComponentModule, CommonModule],
+  exports: [DetailCardComponent],
+})
+export class DetailCardComponentModule {}

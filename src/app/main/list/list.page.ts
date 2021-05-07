@@ -30,6 +30,7 @@ export class ListPage implements OnInit {
       contentLabel: 'Thời gian xuất kho',
       contentDate: '2020-03-11',
       modalData: '/detail/1',
+      type: this.currentSegment,
     },
     {
       headerVal: '215151561',
@@ -37,6 +38,7 @@ export class ListPage implements OnInit {
       contentLabel: 'Thời gian xuất kho',
       contentDate: '2020-03-11',
       modalData: '/detail/1',
+      type: this.currentSegment,
     },
     {
       headerVal: '215151561',
@@ -44,6 +46,7 @@ export class ListPage implements OnInit {
       contentLabel: 'Thời gian xuất kho',
       contentDate: '2020-03-11',
       modalData: '/detail/1',
+      type: this.currentSegment,
     },
     {
       headerVal: '215151561',
@@ -51,6 +54,7 @@ export class ListPage implements OnInit {
       contentLabel: 'Thời gian xuất kho',
       contentDate: '2020-03-11',
       modalData: '/detail/1',
+      type: this.currentSegment,
     },
   ];
   from: string;
@@ -70,5 +74,39 @@ export class ListPage implements OnInit {
 
   onSegmentChange(ev) {
     this.currentSegment = ev;
+    this.listCard = [
+      {
+        headerVal: '215151561',
+        headerLabel: 'Serial',
+        contentLabel: 'Thời gian xuất kho',
+        contentDate: '2020-03-11',
+        modalData: '/detail/1',
+        type: this.currentSegment,
+      },
+      {
+        headerVal: '215151561',
+        headerLabel: 'Serial',
+        contentLabel: 'Thời gian xuất kho',
+        contentDate: '2020-03-11',
+        modalData: '/detail/1',
+        type: this.currentSegment,
+      },
+      {
+        headerVal: '215151561',
+        headerLabel: 'Serial',
+        contentLabel: 'Thời gian xuất kho',
+        contentDate: '2020-03-11',
+        modalData: '/detail/1',
+        type: this.currentSegment,
+      },
+      {
+        headerVal: '215151561',
+        headerLabel: 'Serial',
+        contentLabel: 'Thời gian xuất kho',
+        contentDate: '2020-03-11',
+        modalData: '/detail/1',
+        type: this.currentSegment,
+      },
+    ];
   }
 }

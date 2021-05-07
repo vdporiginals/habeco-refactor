@@ -1,3 +1,21 @@
-<p>
-  detail-card works!
-</p>
+<ng-container *ngIf="!type">
+  <ion-row class="border-none" *ngFor="let data of detailItem.headers">
+    <ion-col size="6">
+      <!-- item.key -->
+      {{ data.name }}
+    </ion-col>
+    <ion-col size="6" class="value-style" *ngFor="let item of detailItem.data">
+      {{ item[data.key] }}
+    </ion-col>
+  </ion-row>
+</ng-container>
+<table *ngIf="type">
+  <tr>
+    <th *ngFor="let header of detailItem.headers">{{ header.name }}</th>
+  </tr>
+  <tr *ngFor="let item of detailItem.data">
+    <td *ngFor="let data of detailItem.headers">
+      {{ item[data.key] }}
+    </td>
+  </tr>
+</table>
