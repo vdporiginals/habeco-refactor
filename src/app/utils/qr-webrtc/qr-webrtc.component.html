@@ -1,4 +1,26 @@
-<div #videoWrapper>
-  
-  <canvas #canvas [height]="height" [width]="width"></canvas>
+<div #videoWrapper class="video_wrap">
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="2">
+        <ion-buttons (click)="closeModal()">
+          <ion-icon name="arrow-back-outline"></ion-icon> </ion-buttons
+      ></ion-col>
+      <ion-col size="8">Quét mã QR</ion-col>
+      <ion-col size="2"></ion-col>
+    </ion-row>
+    <ion-col>
+      <canvas #canvas [height]="height" [width]="width"></canvas>
+    </ion-col>
+    <ion-col>
+      <p class="info">Di chuyển ống kính đến nơi chứa mã QR</p>
+    </ion-col>
+    <ion-col>
+      <p class="danger" *ngIf="currentCode$ | async as code; else noCode">
+        {{ code }}
+      </p>
+      <ng-template #noCode>
+        <p class="danger">Không tìm thấy thông tin hàng hóa</p>
+      </ng-template>
+    </ion-col>
+  </ion-grid>
 </div>

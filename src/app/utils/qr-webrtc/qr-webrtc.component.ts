@@ -3,6 +3,8 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  NgModule,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
@@ -10,19 +12,26 @@ import {
 import jsQR from 'jsqr';
 
 import { Plugins, PermissionType } from '@capacitor/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { IonicModule, ModalController } from '@ionic/angular';
+import { BackButtonComponentModule } from 'src/app/ui/back-button/back-button.component';
+import { Subject } from 'rxjs';
 const { Permissions, Camera } = Plugins;
 @Component({
   selector: 'app-qr-webrtc',
   templateUrl: './qr-webrtc.component.html',
   styleUrls: ['./qr-webrtc.component.scss'],
 })
-export class QrWebrtcComponent implements OnInit, AfterViewInit {
+export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('canvas') canvasElement: ElementRef;
   height = 180;
   width = 180;
   canvas;
   video = document.createElement('video');
-  constructor() {}
+  currentCode = new Subject();
+  currentCode$ = this.currentCode.asObservable();
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {
     this.reqPer();
@@ -43,6 +52,13 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
         this.video.play();
         requestAnimationFrame(this.tick.bind(this));
       });
+  }
+
+  ngOnDestroy() {
+    cancelAnimationFrame(this.tick.bind(this));
+    this.video.pause();
+    this.video.srcObject = null;
+    this.video = null;
   }
 
   async reqPer() {
@@ -151,8 +167,22 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit {
       }
     }
     if (data) {
+      this.currentCode.next(data);
       return cancelAnimationFrame(this.tick.bind(this));
+    } else {
+      this.currentCode.next();
     }
     requestAnimationFrame(this.tick.bind(this));
   }
+
+  closeModal() {
+    this.modalController.dismiss();
+  }
 }
+
+@NgModule({
+  declarations: [QrWebrtcComponent],
+  imports: [IonicModule, RouterModule, CommonModule],
+  exports: [QrWebrtcComponent],
+})
+export class QrWebrtcComponentModule {}

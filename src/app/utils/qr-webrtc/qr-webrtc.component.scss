@@ -1,7 +1,21 @@
-div {
-    background-color: #848484;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+.video_wrap {
+  background-color: #848484;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+.backbtn_wrap {
+}
+
+.danger {
+  color: red;
+}
+ion-grid {
+  height: 100%;
+  display: grid;
+}
+ion-col {
+  align-self: center;
 }
