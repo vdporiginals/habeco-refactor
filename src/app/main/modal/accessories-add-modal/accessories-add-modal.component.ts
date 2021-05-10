@@ -33,7 +33,7 @@ export class AccessoriesAddModalComponent implements OnInit {
     }
   }
   dismiss() {
-    this.modalController.dismiss();
+    this.modalController.dismiss('go');
   }
   closeModal() {
     this.modalController.dismiss();
@@ -42,7 +42,7 @@ export class AccessoriesAddModalComponent implements OnInit {
   async openAccessoriesModal() {
     const modal = await this.modalController.create({
       component: AccessoriesModalComponent,
-      cssClass: 'modal-create-class',
+      cssClass: 'my-custom-class',
     });
     modal.onDidDismiss().then((res) => {
       this.binding = res.data.data;

@@ -331,6 +331,11 @@ export class QrWebrtcComponent implements OnInit, AfterViewInit, OnDestroy {
         },
       },
     });
+    modal.onDidDismiss().then((a) => {
+      if (a.data === 'go') {
+        this.openDetailModal(data, 'from-maintain', 1);
+      }
+    });
     await modal.present();
   }
 
